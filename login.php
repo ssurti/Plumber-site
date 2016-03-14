@@ -10,14 +10,15 @@ $connect = mysql_connect ( "localhost", "root" , "") or die ("Couldn't connect!"
 mysql_select_db("plumber") or die ("Couldn't find db");
 
 $query = mysql_query("SELECT * FROM customers WHERE CUST_SCREENNAME = '$username'");
-$query = mysql_query("select * from customers where CUST_PASSWORD='$password' AND CUST_USERNAME='$username'", $connect);
-$result=mysql_query($query);
-$rows = mysql_num_rows($result);
-if ($rows == 1) {
+$query = mysql_query("select * from customers where CUST_PASSWORD='$password' AND CUST_SCREENNAME='$username'", $connect);
+if ($query === FALSE) {
+die(mysql_error());
+} 
+while($row = mysql_fetch_array($query))
+{
 $_SESSION['login_user']=$username; // Initializing Session
 header("location: home.php"); // Redirecting To Other Page
-} else {
-$error = "Username or Password is invalid";
+
 }
 }
 mysql_close($connect); // Closing Connection
