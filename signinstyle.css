@@ -1,0 +1,41 @@
+body
+{
+	background-color:#FFEA6D;
+}
+
+#signinback
+{
+	background-color: #00B8FF;
+	width:400px;
+	height:400px;
+	position:relative;
+	margin:auto;
+	top:100px;
+	border-radius: 5px;
+	border-width: 5px;
+	border-color: #BD00FF;
+	border-style: ridge;
+}
+
+#title p
+{
+	font-size:30px;
+	text-align: center;
+}
+
+hr
+{
+	color: #BD00FF;
+}
+
+#user p,.formfill
+
+{
+	margin-left: 120px;
+}
+
+#loginsignup
+{
+	width:100px;
+	margin-left: 340px;
+}
