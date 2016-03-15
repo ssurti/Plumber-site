@@ -4,6 +4,7 @@ if(isset($_POST['btn-login']))
 {
 $username = $_POST[ 'username' ];
 $password = $_POST[ 'password' ];
+$_SESSION['Error'] = "You left one or more of the required fields.";
 if ($username&&$password)
 {
 $connect = mysql_connect ( "localhost", "root" , "") or die ("Couldn't connect!");
@@ -11,15 +12,13 @@ mysql_select_db("plumber") or die ("Couldn't find db");
 
 $query = mysql_query("SELECT * FROM customers WHERE CUST_SCREENNAME = '$username'");
 $query = mysql_query("select * from customers where CUST_PASSWORD='$password' AND CUST_SCREENNAME='$username'", $connect);
-if ($query === FALSE) {
-die(mysql_error());
-} 
-while($row = mysql_fetch_array($query))
+if ($row = mysql_fetch_array($query))
 {
 $_SESSION['login_user']=$username; // Initializing Session
 header("location: home.php"); // Redirecting To Other Page
-
 }
+else {$msg="Incorrect username and password!";
+echo $msg;}
 }
 mysql_close($connect); // Closing Connection
 }
@@ -33,7 +32,7 @@ mysql_close($connect); // Closing Connection
 </head>
 <body>
    <div id="title">
-        <p><FONT FACE="algerian">Welcome</FONT></p>
+        <p><FONT FACE="algerian">Welcome!</FONT></p>
         <hr>
     </div>
 <center>
