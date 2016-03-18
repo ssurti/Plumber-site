@@ -1,6 +1,11 @@
 <?php
 session_start();
-echo "Welcome, " . $_SESSION [ 'login_user' ]. " to the review page!" ;
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    echo "Welcome to the review page, " . $_SESSION['username'] . "!";
+} else {
+    echo "Please log in or create an account to write a review.";
+}
 ?>
 <!DOCTYPE html>
 <html>
