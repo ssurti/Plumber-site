@@ -1,5 +1,7 @@
+<?php include 'base.php' ?>
+
 <?php
-session_start();
+
 require 'dbconnect.php';
 if(isset($_POST['btn-signup'])){
 $username = strtolower(strip_tags($_POST['username']));
